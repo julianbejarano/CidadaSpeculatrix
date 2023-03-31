@@ -8,8 +8,6 @@
 // How many NeoPixels are attached to the Arduino?
 #define LED_COUNT 12
 
-
-
 int NumRedes;
 
 //int LED = 1; //Define blinking LED pin
@@ -20,7 +18,6 @@ int Brightness= 150;
 int SegEspera= 50;
 int SegEncendido= 10;
 int maxRedes = 100;
-
 
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html>
@@ -55,7 +52,6 @@ const char index_html[] PROGMEM = R"rawliteral(
 </html>
 )rawliteral";
 
-
 // Replaces placeholder with button section in your web page
 String processor(const String& var){
   //Serial.println(var);
@@ -64,16 +60,7 @@ String processor(const String& var){
   }
   return String();
 }
-
-//Esta variable se encarga de almacenar como texto, 
-//la información de las redes encontradas
-
-
-// Declare our NeoPixel strip object:
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
-
-
-
 
 void scan (){
   //Serial.println(var);
@@ -127,15 +114,7 @@ void setup(){
 }
 
 void showMensaje(){
-   // en este cso especificamos donde queremos la direccion de los resultados con /resiltados
-    server.on("/resultados", HTTP_GET, [](AsyncWebServerRequest *request){
-    /*
-     en este punto es dondese envia a lapagina la información, primero le decimos que envíe
-    la informacion como texto plano y luego le especificamos que contenido enviar, en este caso le envio la variable mensaje, 
-    pero tambien podria desde este parámetro poner una funcion que retorne un mensaje
-       ejemplo: request->send(200, "text/plain", HolaMundo());
-
-    */
+    server.on("/resultados", HTTP_GET, [](AsyncWebServerRequest *request){   
     request->send(200, "text/html", Mensaje);
   });
 }
@@ -148,15 +127,3 @@ void loop(){
   cleanColor();
   delay( SegEspera *1000);
 }
-
- /* referencias:
-https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/soft-access-point-class.html
-enviar un dato desde sensor a la pagina web=
-https://techtutorialsx.com/2018/01/01/esp8266-arduino-asynchronous-http-web-server/
-
-https://techtutorialsx.com/2018/02/03/esp32-arduino-async-server-controlling-http-methods-allowed/
-
-https://randomnerdtutorials.com/esp8266-nodemcu-async-web-server-espasyncwebserver-library/
-
-
-*/
