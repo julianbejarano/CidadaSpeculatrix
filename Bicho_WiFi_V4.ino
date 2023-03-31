@@ -1,26 +1,6 @@
-_/*
 
-con el método WiFi.softAPIP, la ip predeterminada es 192.168.4.1
-
-*/
-// Import required libraries
-
-/*//estas son para esp32
-#include <WiFi.h>
-#include <AsyncTCP.h>
-#include <ESPAsyncWebServer.h>
-*/
-//estas son para esp8266
-#include <ESP8266WiFi.h>
-#include <ESPAsyncTCP.h>
-#include <ESPAsyncWebServer.h>
-#include <ESP8266mDNS.h>
-#include "ESP8266WiFi.h"
-
-#include <Adafruit_NeoPixel.h>
-#ifdef __AVR__
- #include <avr/power.h> // Required for 16 MHz Adafruit Trinket
-#endif
+//Creator: JulianBejarano
+// Project: Anima CicadaSpeculatrix
 
 // Which pin on the Arduino is connected to the NeoPixels?
 #define LED_PIN    2
@@ -29,9 +9,6 @@ con el método WiFi.softAPIP, la ip predeterminada es 192.168.4.1
 #define LED_COUNT 12
 
 
-AsyncWebServer server(80);
-
-String Mensaje = "Hola Mundo";
 
 int NumRedes;
 
